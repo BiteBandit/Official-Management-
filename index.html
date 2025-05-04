@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Membership Home</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #1a1a1a, #b68a2f); /* Dark to luxurious gold gradient */
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .container {
+      padding: 120px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-size: 3em;
+      font-family: 'Times New Roman', serif;
+      color: #FFD700; /* Rich gold color */
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+    p {
+      font-size: 1.3em;
+      margin-bottom: 40px;
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: #f0e68c; /* Soft goldish text for the paragraph */
+    }
+    .btn {
+      padding: 18px 35px;
+      font-size: 18px;
+      background: linear-gradient(135deg, #FFD700, #FF8C00); /* Gold gradient */
+      border: none;
+      color: #000;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
+    }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.8);
+      }
+      100% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exclusive Membership Access</h1>
+    <p>Join now and enjoy premium perks with our Gold, Silver, Platinum, or Diamond membership cards.</p>
+    <a class="btn" href="form.html">Get Membership Card Now</a>
+  </div>
+</body>
+</html>

