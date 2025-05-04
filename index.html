@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Membership Home</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      background: linear-gradient(135deg, #1a1a1a, #b68a2f); /* Dark to luxurious gold gradient */
+      background: linear-gradient(135deg, #1a1a1a, #b68a2f);
       background-size: cover;
       background-attachment: fixed;
       font-family: 'Georgia', serif;
@@ -17,34 +20,34 @@
       overflow: hidden;
     }
     .container {
-      padding: 120px 20px;
+      padding: 60px 20px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
     h1 {
-      font-size: 3em;
+      font-size: 2em;
       font-family: 'Times New Roman', serif;
-      color: #FFD700; /* Rich gold color */
+      color: #FFD700;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       margin-bottom: 20px;
       animation: glow 1.5s ease-in-out infinite alternate;
     }
     p {
-      font-size: 1.3em;
-      margin-bottom: 40px;
-      font-family: 'Georgia', serif;
+      font-size: 1.1em;
+      margin-bottom: 30px;
       line-height: 1.6;
-      color: #f0e68c; /* Soft goldish text for the paragraph */
+      color: #f0e68c;
+      padding: 0 10px;
     }
     .btn {
-      padding: 18px 35px;
-      font-size: 18px;
-      background: linear-gradient(135deg, #FFD700, #FF8C00); /* Gold gradient */
+      padding: 16px 30px;
+      font-size: 16px;
+      background: linear-gradient(135deg, #FFD700, #FF8C00);
       border: none;
       color: #000;
       cursor: pointer;
@@ -53,15 +56,27 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .btn:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       box-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
     }
     @keyframes glow {
       0% {
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.8);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8);
       }
       100% {
-        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 1);
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 1);
+      }
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.7em;
+      }
+      p {
+        font-size: 1em;
+      }
+      .btn {
+        font-size: 15px;
+        padding: 14px 24px;
       }
     }
   </style>
