@@ -7,84 +7,81 @@
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
-      margin: 0;
-      background: linear-gradient(135deg, #1a1a1a, #b68a2f);
-      background-size: cover;
-      background-attachment: fixed;
-      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #0d0d0d, #1f1f1f, #b28d37);
+      background-size: 400% 400%;
+      animation: backgroundShift 12s ease infinite;
+      font-family: 'Cinzel', serif;
       color: #fff;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .container {
-      padding: 60px 20px;
-      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      min-height: 100vh;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      padding: 50px 30px;
+      border-radius: 20px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(178, 141, 55, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      animation: fadeIn 1.5s ease;
     }
     h1 {
-      font-size: 2em;
-      font-family: 'Times New Roman', serif;
+      font-size: 2.5em;
       color: #FFD700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       margin-bottom: 20px;
-      animation: glow 1.5s ease-in-out infinite alternate;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
     }
     p {
-      font-size: 1.1em;
+      font-size: 1.2em;
+      color: #e5d6a0;
+      line-height: 1.7;
       margin-bottom: 30px;
-      line-height: 1.6;
-      color: #f0e68c;
-      padding: 0 10px;
     }
     .btn {
-      padding: 16px 30px;
-      font-size: 16px;
-      background: linear-gradient(135deg, #FFD700, #FF8C00);
+      padding: 16px 40px;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #FFD700, #c99700);
       border: none;
       color: #000;
-      cursor: pointer;
-      border-radius: 8px;
+      border-radius: 50px;
       text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
     }
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8);
-      }
-      100% {
-        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 1);
-      }
+    @keyframes backgroundShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 480px) {
-      h1 {
-        font-size: 1.7em;
-      }
-      p {
-        font-size: 1em;
-      }
-      .btn {
-        font-size: 15px;
-        padding: 14px 24px;
-      }
+      h1 { font-size: 1.8em; }
+      p { font-size: 1em; }
+      .btn { font-size: 15px; padding: 14px 28px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="card">
     <h1>Exclusive Membership Access</h1>
-    <p>Join now and enjoy premium perks with our Gold, Silver, Platinum, or Diamond membership cards.</p>
+    <p>Experience prestige with our Gold, Platinum, or Diamond memberships — each tailored for those who demand excellence.</p>
     <a class="btn" href="form.html">Get Membership Card Now</a>
   </div>
 </body>
